@@ -35,6 +35,7 @@ function initializeClock(id, endtime) {
     secondsSpan.innerHTML = ('0' + t.seconds).slice(-2);
 
     if (t.total <= 0) {
+      window.location.pathname = "/qrcode";
       clearInterval(timeinterval);
     }
   }

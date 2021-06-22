@@ -20,4 +20,13 @@ class DefaultController extends AbstractController
             'number' => $number,
         ]);
     }
+
+    /**
+      * @Route("/qrcode")
+      */
+      public function qrcode(): Response
+      {
+
+          return $this->render('default/qrcode.html.twig');
+      }
 }
