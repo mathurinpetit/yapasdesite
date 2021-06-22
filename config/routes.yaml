@@ -1,3 +1,7 @@
 index:
    path: /
    controller: App\Controller\DefaultController::index
+
+qrcode:
+   path: /qrcode
+   controller: App\Controller\DefaultController::qrcode
