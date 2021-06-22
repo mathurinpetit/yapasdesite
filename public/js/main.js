@@ -44,7 +44,7 @@ function initializeClock(id, endtime) {
   const timeinterval = setInterval(updateClock, 1000);
 }
 
-const deadline = 'June 22 2021 18:30:00 GMT+0200';
+const deadline = 'June 22 2021 19:00:00 GMT+0200';
 initializeClock('clockdiv', deadline);
 
 });
