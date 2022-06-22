@@ -4,32 +4,13 @@
 
 {% block body %}
 
-<h1>Il vous faudra attendre encore un peu Morgane...</h1>
-<h1>Mais votre anniversaire arrive à grand pas.</h1>
-<h1>En attendant, bonne fête de la musique.</h1>
-<div id="clockdiv">
-  <div>
-    <span class="days"></span>
-    <div class="smalltext">Jours</div>
-  </div>
-  <div>
-    <span class="hours"></span>
-    <div class="smalltext">Heures</div>
-  </div>
-  <div>
-    <span class="minutes"></span>
-    <div class="smalltext">Minutes</div>
-  </div>
-  <div>
-    <span class="seconds"></span>
-    <div class="smalltext">Secondes</div>
-  </div>
-</div>
+<h1>Bonjour Agent Morgane...</h1>
+<h1>Il vous faudra taper le bon code ci-dessous :</h1>
 
+<label for="code">Code :</label>
 
-<script>
-const deadline = new Date(Date.parse(new Date()) + 15 * 24 * 60 * 60 * 1000);
-initializeClock('clockdiv', deadline);
-</script>
+<input type="text" id="code" name="code" required
+       minlength="6" maxlength="6" size="10">
+
 
 {% endblock %}
