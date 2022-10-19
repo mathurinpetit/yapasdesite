@@ -22,11 +22,11 @@ class DefaultController extends AbstractController
     }
 
     /**
-      * @Route("/qrcode")
+      * @Route("/lart")
       */
-      public function qrcode(): Response
+      public function lart(): Response
       {
 
-          return $this->render('default/qrcode.html.twig');
+          return $this->render('default/lart.html.twig');
       }
 }
