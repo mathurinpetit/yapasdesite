@@ -22,11 +22,19 @@ class DefaultController extends AbstractController
     }
 
     /**
-      * @Route("/lart")
+      * @Route("/statue/{name}")
       */
-      public function lart(): Response
+      public function statue($name): Response
       {
+        $statuesFile = file('statues.csv');
+        $statue = null;
+        foreach ($statuesFile as $line_num => $row) {
+          $c = str_getcsv($row,';');
+          if(substr($row,0,1) !== '#' && $c[0] == $name){
+            $statue = $c;
+          }
+        }
 
-          return $this->render('default/lart.html.twig');
+          return $this->render('default/statue.html.twig', array('statue' => $statue));
       }
 }

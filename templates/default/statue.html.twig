@@ -1,0 +1,62 @@
+{# templates/lart.html.twig #}
+
+{% extends "base.html.twig" %}
+
+{% block body %}
+
+{% set name=statue[0] %}
+{% set nomStatue=statue[1] %}
+{% set nomSculpteur=statue[2] %}
+{% set lienSculpteur=statue[3] %}
+{% set dateStatue=statue[4] %}
+{% set personnage=statue[5] %}
+{% set lienPersonnage=statue[6] %}
+{% set tourDeTete=statue[7] %}
+{% set ville=statue[8] %}
+{% set lieu=statue[9] %}
+{% set encart=statue[10] %}
+{% set materiaux=statue[11] %}
+
+<div class="text-center">
+<h1>{{ nomStatue }}</h1>
+<h2><a href="{{ lienSculpteur }}">{{ nomSculpteur }}</a> - {{dateStatue}}</h2>
+<h3>{{ ville~' - '~lieu }}</h3>
+</div>
+<div class="container">
+
+    <div class="d-flex justify-content-center">
+        <video autoplay muted class="w-100 align-items-center">
+          <source src="{{ asset('videos/'~name~'.webm') }}" type="video/webm">
+          <p>Votre navigateur ne prend pas en charge les vidéos HTML5.
+             Voici <a href="videos/{{name}}.webm">un lien pour télécharger la vidéo</a>.</p>
+        </video>
+    </div>
+
+    <div class="d-flex">
+      <div class="align-items-center">
+        <p>{{ encart }}</p>
+      </div>
+    </div>
+
+    <div class="d-flex">
+      <div class="align-items-center">
+        <img  src="{{ asset('images/casquette'~name~'.jpg') }}" class="img-fluid w-100" alt="casquette{{name}}" >
+      </div>
+    </div>
+
+    <div class="d-flex">
+      <div class="align-items-center">
+        <p>{{ materiaux }}</p>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-12">
+        <img  src="{{ asset('images/'~name~'.jpg') }}" class="img-fluid w-100" alt="l'art" >
+        <p>Tour de tête : {{ tourDeTete }}</p>
+      </div>
+    </div>
+</div>
+
+
+{% endblock %}
