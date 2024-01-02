@@ -25,7 +25,7 @@ class AdminController extends AbstractController
       */
       public function upload(Request $request): Response
       {
-        ini_set('post_max_size' : '3000M');
+        ini_set('post_max_size','3000M');
         if ($request->isMethod('POST')) {
 
            $file = $request->files->get('file');
