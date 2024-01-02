@@ -2,6 +2,6 @@ index:
    path: /
    controller: App\Controller\DefaultController::index
 
-qrcode:
-   path: /qrcode
-   controller: App\Controller\DefaultController::qrcode
+admin:
+   path: /admin
+   controller: App\Controller\AdminController::admin

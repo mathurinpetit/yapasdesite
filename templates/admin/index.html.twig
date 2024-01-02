@@ -1,0 +1,54 @@
+{# templates/lucky/number.html.twig #}
+
+{% extends "base.html.twig" %}
+
+{% block body %}
+<body class="d-flex h-100 text-center text-bg-dark">
+
+<div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
+  <header class="mb-auto">
+    <div>
+        <h1 class="float-md-start mb-0">Admin - Page d'ajout pour 1Movie30Seconds</h1>
+    </div>
+  </header>
+  <main class="px-3">
+    <form id="upload-form">
+      <input type="file" id="file-input" />
+      <input type="submit" value="Upload" />
+      <div class="progress-bar">
+        <div id="progress"></div>
+      </div>
+    </form>
+
+  </main>
+
+  <footer class="mt-auto text-white-50">
+    <p>Cover template for <a href="https://getbootstrap.com/" class="text-white">Bootstrap</a>, by <a href="https://twitter.com/mdo" class="text-white">@mdo</a>.</p>
+  </footer>
+</div>
+</body>
+<script type="text/javascript">
+  const form = document.getElementById('upload-form');
+  const fileInput = document.getElementById('file-input');
+  const progressBar = document.getElementById('progress');
+
+  form.addEventListener('submit', e => {
+    e.preventDefault();
+
+    const file = fileInput.files[0];
+    const formData = new FormData();
+    formData.append('file', file);
+
+    const xhr = new XMLHttpRequest();
+    xhr.open('POST', '/admin/upload', true);
+    xhr.upload.onprogress = e => {
+      if (e.lengthComputable) {
+        const percentComplete = (e.loaded / e.total) * 100;
+        progressBar.style.width = `${percentComplete}%`;
+      }
+    };
+    xhr.send(formData);
+  });
+</script>
+
+{% endblock %}
