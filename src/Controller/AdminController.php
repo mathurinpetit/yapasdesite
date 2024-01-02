@@ -72,9 +72,7 @@ class AdminController extends AbstractController
               $python="/usr/bin/python3";
               $commandForCron = "cd ..; ".$python." ".$pathTo1movie30secondsScript.' "'.$nameOfMovieFilePath.'" "'.$nameOfMovie.'" "'.$directorOfMovie.'" "'.$yearOfMovie.'" 2>&1 > ./logs/log.txt';
               file_put_contents('../data/CRON', $commandForCron);
-              chown('../data/CRON', 'www-data:mathurin');
-              chmod('../data/CRON', 'g+wr');
-
+              
             }
             return $this->render('admin/traitement.html.twig',["nameOfMovie" => $nameOfMovie,"directorOfMovie" => $directorOfMovie,"yearOfMovie" => $yearOfMovie]);
         }
