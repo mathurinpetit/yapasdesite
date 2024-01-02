@@ -55,7 +55,7 @@ subprocess.run(createLinearSpeedBy100, shell = True, executable="/bin/bash")
 framify(movie_path, directoryForMovie, radixOfMovieName, nameOfMovie+'\n\n'+directorOfMovie+'\n\n'+yearOfMovie);
 
 #STEP 3 : LIST OF FRAMES
-extractColoredFrames ="bin/extractColoredFrames.sh "+directoryForMovie+'/'+nameOfMovieSpeedBy100+" "+directoryForMovie
+extractColoredFrames ="./bin/extractColoredFrames.sh "+directoryForMovie+'/'+nameOfMovieSpeedBy100+" "+directoryForMovie
 subprocess.run(extractColoredFrames, shell = True, executable="/bin/bash")
 
 #STEP 4 : CREATE POSTER
