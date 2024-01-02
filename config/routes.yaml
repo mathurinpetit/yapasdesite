@@ -5,3 +5,7 @@ index:
 admin:
    path: /admin
    controller: App\Controller\AdminController::admin
+
+admin_create_files:
+   path: /admin/create-files/{nameOfMovie}/{directorOfMovie}/{yearOfMovie}
+   controller: App\Controller\AdminController::createFiles

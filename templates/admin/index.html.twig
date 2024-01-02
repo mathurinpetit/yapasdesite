@@ -12,14 +12,36 @@
     </div>
   </header>
   <main class="px-3">
-    <form id="upload-form">
-      <input type="file" id="file-input" />
-      <input type="submit" value="Upload" />
-      <div class="progress-bar">
-        <div id="progress"></div>
-      </div>
-    </form>
+    <div class="card">
+      <div class="card-body">
+        <form id="upload-form">
+          <div class="form-group">
+            <input type="file" id="file-input" class="form-control" />
+            <div class="progress-bar">
+              <div id="progress"></div>
+            </div>
+          </div>
+          <div class="form-inline">
+            <div class="form-group">
+              <label for="nameOfMovie" class="my-1 mr-2">Name of Movie</label>
+              <input type="text" class="form-control my-1 mr-sm-2" name="nameOfMovie" id="nameOfMovie" placeholder="Name of Movie">
+            </div>
+            <div class="form-group">
+              <label for="directorOfMovie" class="my-1 mr-2">Director of Movie</label>
+              <input type="text" class="form-control my-1 mr-sm-2" name="directorOfMovie" id="directorOfMovie" placeholder="Director of Movie">
+            </div>
+            <div class="form-group">
+              <label for="yearOfMovie" class="my-1 mr-2">Year of Movie</label>
+              <input type="text" class="form-control my-1 mr-sm-2" name="yearOfMovie" id="yearOfMovie" placeholder="Year of Movie">
+            </div>
+          </div>
 
+          <button type="submit" class="btn btn-primary">Envoyer</button>
+
+
+    </form>
+  </div>
+  </div>
   </main>
 
   <footer class="mt-auto text-white-50">
@@ -32,12 +54,24 @@
   const fileInput = document.getElementById('file-input');
   const progressBar = document.getElementById('progress');
 
+  const nameOfMovieInput = document.getElementById('nameOfMovie');
+  const directorOfMovieInput = document.getElementById('directorOfMovie');
+  const yearOfMovieInput = document.getElementById('yearOfMovie');
+
   form.addEventListener('submit', e => {
     e.preventDefault();
 
     const file = fileInput.files[0];
+
+    const nameOfMovie = nameOfMovieInput.value;
+    const directorOfMovie = directorOfMovieInput.value;
+    const yearOfMovie = yearOfMovieInput.value;
+
     const formData = new FormData();
     formData.append('file', file);
+    formData.append('nameOfMovie', nameOfMovie);
+    formData.append('directorOfMovie', directorOfMovie);
+    formData.append('yearOfMovie', yearOfMovie);
 
     const xhr = new XMLHttpRequest();
     xhr.open('POST', '/admin/upload', true);
@@ -48,6 +82,12 @@
       }
     };
     xhr.send(formData);
+    xhr.onload = function() {
+      var responseObj = JSON.parse(xhr.response);
+      if(responseObj.upload == "done"){
+        document.location.href="/admin/create-files/"+nameOfMovie+"/"+directorOfMovie+"/"+yearOfMovie;
+      }
+    };
   });
 </script>
 
