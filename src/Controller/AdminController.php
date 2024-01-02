@@ -55,8 +55,9 @@ class AdminController extends AbstractController
         {
 
             $movie =  $entityManager->getRepository(Movie::class)->findOneByNameOfMovie($nameOfMovie);
+            $nameOfMovieWithoutSpaces = str_replace(" ", "", $nameOfMovie);
+            
             if ($request->isMethod('POST') && !$movie) {
-
               $movie = new Movie();
               $movie->setNameOfMovie($nameOfMovie);
               $movie->setDirectorOfMovie($directorOfMovie);
@@ -67,13 +68,13 @@ class AdminController extends AbstractController
               $em->flush();
 
               $pathTo1movie30secondsScript = "./bin/onemovie30seconds.py";
-              $nameOfMovieWithoutSpaces = str_replace(" ", "", $nameOfMovie);
+
               $nameOfMovieFilePath = './data/'.$nameOfMovieWithoutSpaces.'.mp4';
               $python="/usr/bin/python3";
               $commandForCron = "cd ..; ".$python." ".$pathTo1movie30secondsScript.' "'.$nameOfMovieFilePath.'" "'.$nameOfMovie.'" "'.$directorOfMovie.'" "'.$yearOfMovie.'" 2>&1 > ./logs/log.txt';
               file_put_contents('../data/CRON', $commandForCron);
-              
+
             }
-            return $this->render('admin/traitement.html.twig',["nameOfMovie" => $nameOfMovie,"directorOfMovie" => $directorOfMovie,"yearOfMovie" => $yearOfMovie]);
+            return $this->render('admin/traitement.html.twig',["nameOfMovie" => $nameOfMovie,"directorOfMovie" => $directorOfMovie,"yearOfMovie" => $yearOfMovie, "nameOfMovieWithoutSpaces" => $nameOfMovieWithoutSpaces]);
         }
 }
