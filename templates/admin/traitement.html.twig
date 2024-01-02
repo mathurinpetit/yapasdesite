@@ -1,0 +1,31 @@
+{# templates/lucky/number.html.twig #}
+
+{% extends "base.html.twig" %}
+
+{% block body %}
+<body class="d-flex h-100 text-center text-bg-dark">
+
+<div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
+  <header class="mb-auto">
+    <div>
+        <h1 class="float-md-start mb-0">Admin - Page d'ajout pour 1Movie30Seconds</h1>
+    </div>
+  </header>
+  <main class="px-3">
+    <div class="card">
+      <div class="card-body">
+        traitement en cours du film {{ nameOfMovie }} ! 
+      </div>
+    </div>
+  </main>
+
+  <footer class="mt-auto text-white-50">
+    <p>Cover template for <a href="https://getbootstrap.com/" class="text-white">Bootstrap</a>, by <a href="https://twitter.com/mdo" class="text-white">@mdo</a>.</p>
+  </footer>
+</div>
+</body>
+<script type="text/javascript">
+  console.log("On reloadera toute les minutes");
+</script>
+
+{% endblock %}
